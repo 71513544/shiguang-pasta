@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="透過拾光義麵聯絡表單，留下姓名、電話、Email 與想說的話。">
+  <title>拾光義麵｜聯絡我們</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">拾光義麵 <span>SHIGUANG PASTA</span></a>
+    <nav aria-label="主選單">
+      <a href="index.html">首頁</a>
+      <a href="about.html">公司介紹</a>
+      <a class="active" aria-current="page" href="contact.html">聯絡我們</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h1>聯絡我們</h1>
+      <p>有任何想法、建議或合作邀約，都歡迎留下訊息。</p>
+    </section>
+    <section class="content-card">
+      <h2>寫封訊息給拾光義麵</h2>
+      <p>請填寫以下資料，送出後將開啟確認頁面。</p>
+      <!-- 將下方 action 的 YOUR_DEPLOYMENT_ID 換成 Apps Script 部署網址中的實際 ID。 -->
+      <form id="contact-form" action="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" method="POST" target="_blank" accept-charset="UTF-8">
+        <div class="form-grid">
+          <div class="field"><label for="name">姓名 <span class="required">*</span></label><input id="name" name="name" autocomplete="name" maxlength="80" required placeholder="請輸入您的姓名"></div>
+          <div class="field"><label for="phone">聯絡電話 <span class="required">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required placeholder="請輸入聯絡電話"></div>
+          <div class="field full"><label for="email">Email <span class="required">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="160" required placeholder="example@gmail.com"></div>
+          <div class="field full"><label for="message">聯絡內容 <span class="required">*</span></label><textarea id="message" name="message" maxlength="3000" required placeholder="請輸入您想詢問的內容"></textarea></div>
+        </div>
+        <p class="note">* 為必填欄位。資料僅用於回覆此次聯絡需求；本頁為課程示範作品。</p>
+        <button class="button submit-button" type="submit">送出聯絡表單 →</button>
+        <p class="note" id="form-hint" role="status">提交後請查看新開啟的確認頁面；若顯示成功，再確認收件信箱是否收到通知。</p>
+      </form>
+    </section>
+  </main>
+  <footer>© 2026 拾光義麵 Shiguang Pasta · 課程作品示範網站</footer>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      if (this.action.includes('YOUR_DEPLOYMENT_ID')) {
+        event.preventDefault();
+        document.getElementById('form-hint').textContent = '尚未設定寄信網址：請先完成 Apps Script 部署，並將表單 action 換成你的 Web App 網址。';
+      }
+    });
+  </script>
+</body>
+</html>
